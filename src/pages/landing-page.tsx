@@ -1,7 +1,7 @@
 export function LandingPage() {
   return (
-    <div>
-
+    <div className="w-full h-full">
+      
     </div>
   )
 }
