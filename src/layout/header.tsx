@@ -42,7 +42,6 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
         <img src="https://www.lohoff.com/acapsy/img/logo.png" alt="Lohoff Logo" className="h-6 w-auto" />
         {isPlayground && <X />}
         {isPlayground && <img src="https://i0.wp.com/hz.digital/wp-content/uploads/2024/02/hz-digital.png?fit=1429%2C330&ssl=1" alt="HZ Digital Logo" className="h-8 w-auto" />}
-
       </div>
       
     {!isPlayground && (
