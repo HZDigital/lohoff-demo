@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 import { useState } from "react";
 
-export function Header() {
+export function Header({ isPlayground }: { isPlayground: boolean }) {
   const [location, setLocation] = useState("Start");
+  
 
   const HEADER_ITEMS = [
     {
@@ -33,14 +35,19 @@ export function Header() {
 
   return (
     <header className="w-full px-[10%] flex items-center justify-between bg-background font-roboto text-[12.75px]">
-      <div>
+      <div className="flex items-center gap-2">
         <img src="https://www.lohoff.com/acapsy/img/logo.png" alt="Lohoff Logo" className="h-6 w-auto" />
+        {isPlayground && <X />}
+        {isPlayground && <img src="https://i0.wp.com/hz.digital/wp-content/uploads/2024/02/hz-digital.png?fit=1429%2C330&ssl=1" alt="HZ Digital Logo" className="h-8 w-auto" />}
+
       </div>
-      <div className="flex">
-        {HEADER_ITEMS.map((item) => (
-          <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
-        ))}
-      </div>
+      {!isPlayground && (
+        <div className="flex">
+          {HEADER_ITEMS.map((item) => (
+            <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
+          ))}
+        </div>
+      )}
     </header>
   )
 }
