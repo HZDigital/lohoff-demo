@@ -1,7 +1,11 @@
-import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Globe } from "lucide-react";
+
+import { useUIStore } from "@/store/ui-store";
 
 export function Header() {
+  const { lang, setLang } = useUIStore();
   const [location, setLocation] = useState("Start");
 
   const HEADER_ITEMS = [
@@ -10,23 +14,23 @@ export function Header() {
       href: "/"
     },
     {
-      label: "Aktuelles",
+      label: lang === "DE" ? "Aktuelles" : "News",
       href: "/",
     },
     {
-      label: "Über uns",
+      label: lang === "DE" ? "Über uns" : "About Us",
       href: "/",
     },
     {
-      label: "Lösungen",
+      label: lang === "DE" ? "Lösungen" : "Solutions",
       href: "/",
     },
     {
-      label: "Karriere",
+      label: lang === "DE" ? "Karriere" : "Career",
       href: "/",
     },
     {
-      label: "Kontakt",
+      label: lang === "DE" ? "Kontakt" : "Contact",
       href: "/",
     }
   ]
@@ -40,6 +44,9 @@ export function Header() {
         {HEADER_ITEMS.map((item) => (
           <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
         ))}
+        <div className="flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground gap-2" onClick={() => setLang(lang === "DE" ? "EN" : "DE")}>
+          <Globe size={16} className="mb-0.5"/> {lang === "DE" ? "DE" : "EN"}
+        </div>
       </div>
     </header>
   )
