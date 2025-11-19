@@ -1,12 +1,13 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Globe } from "lucide-react";
+import { X, Globe } from "lucide-react";
+import { useState } from "react";
 
 import { useUIStore } from "@/store/ui-store";
 
-export function Header() {
+export function Header({ isPlayground }: { isPlayground: boolean }) {
   const { lang, setLang } = useUIStore();
   const [location, setLocation] = useState("Start");
+  
 
   const HEADER_ITEMS = [
     {
@@ -37,9 +38,14 @@ export function Header() {
 
   return (
     <header className="w-full px-[10%] flex items-center justify-between bg-background font-roboto text-[12.75px]">
-      <div>
+      <div className="flex items-center gap-2">
         <img src="https://www.lohoff.com/acapsy/img/logo.png" alt="Lohoff Logo" className="h-6 w-auto" />
+        {isPlayground && <X />}
+        {isPlayground && <img src="https://i0.wp.com/hz.digital/wp-content/uploads/2024/02/hz-digital.png?fit=1429%2C330&ssl=1" alt="HZ Digital Logo" className="h-8 w-auto" />}
+
       </div>
+      
+    {!isPlayground && (
       <div className="flex">
         {HEADER_ITEMS.map((item) => (
           <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
@@ -48,6 +54,7 @@ export function Header() {
           <Globe size={16} className="mb-0.5"/> {lang === "DE" ? "DE" : "EN"}
         </div>
       </div>
+                )}
     </header>
   )
 }
