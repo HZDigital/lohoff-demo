@@ -32,7 +32,7 @@ export function Header() {
   ]
 
   return (
-    <header className="w-full px-[270px] flex items-center justify-between bg-background font-roboto">
+    <header className="w-full px-[10%] flex items-center justify-between bg-background font-roboto text-[12.75px]">
       <div>
         <img src="https://www.lohoff.com/acapsy/img/logo.png" alt="Lohoff Logo" className="h-6 w-auto" />
       </div>
@@ -59,7 +59,7 @@ export function HeaderItem({
     <a
       href={href}
       className={cn(
-        "flex items-center h-20 px-[15px] text-sm hover:bg-accent text-muted-foreground hover:text-accent-foreground",
+        "flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground",
         selected && "font-bold text-primary hover:text-primary"
       )}
       onClick={() => setLocation(label)}
