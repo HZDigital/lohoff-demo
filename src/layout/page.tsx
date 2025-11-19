@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 export function Page({ children }: { children: React.ReactNode }) {
 
-  const isPlayground = useLocation().pathname === "/gui-collection";
+  const isPlayground = useLocation().pathname === "/playground";
 
   
   return isPlayground ? (
