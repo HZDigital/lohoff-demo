@@ -40,7 +40,7 @@ export function PlaygroundPage() {
     : data.filter(row => row.Year === selectedYear);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-start gap-8 pl-40 pr-10 lg:px-[10%] pt-16 pb-8">
+    <div className="w-full h-full flex flex-col items-center justify-start px-10 gap-8 pt-16 pb-8">
       {/* Delete or Comment out this component reference */}
       {currentDemoTab === "introduction" && <DeleteMe />}
       {currentDemoTab === "demo-views" && (
