@@ -2,7 +2,7 @@ import { DemoCharts } from "@/components/demo/demo-charts";
 import { DemoTable } from "@/components/demo/demo-table"
 import { useUIStore } from "@/store/ui-store";
 import type { CsvRow } from "@/types/csv-row";
-import { DownloadCloud, GitBranch, GitBranchPlus, Github, MousePointerClick, PackageOpen, Play } from "lucide-react"
+import { GitBranch, GitBranchPlus, Github, MousePointerClick, Play } from "lucide-react"
 import { useEffect, useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -12,22 +12,10 @@ export function PlaygroundPage() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
 
   useEffect(() => {
-    fetch("/demo-data-lohoff.csv")
-      .then((response) => response.text())
-      .then((text) => {
-        const lines = text.trim().split("\n");
-        const headers = lines[0].split(";").map((h) => h.replace(/"/g, ""));
-
-        const rows = lines.slice(1).map((line) => {
-          const values = line.split(";").map((v) => v.replace(/"/g, ""));
-          const row: Record<string, string> = {};
-          headers.forEach((header, index) => {
-            row[header] = values[index];
-          });
-          return row as unknown as CsvRow;
-        });
-
-        setData(rows);
+    fetch("/demo-data-lohoff.json")
+      .then((response) => response.json())
+      .then((jsonData: CsvRow[]) => {
+        setData(jsonData);
       });
   }, []);
 
@@ -73,10 +61,8 @@ function DeleteMe() {
   return (
     <div className="w-full flex flex-col justify-start gap-4 text-sm">
       <div className="flex items-center gap-2"><Github size={16} />Check out the repository on github: <a href="https://github.com/HZDigital/lohoff-demo" className="text-primary font-bold hover:underline hover:text-primary-hover">Lohoff Demo Repository</a></div>
-      <div className="flex items-center gap-2"><DownloadCloud size={16} />Get the repository from github. <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; gh repo clone HZDigital/lohoff-demo</span></div></div>
-      <div className="flex items-center gap-2"><GitBranch size={16} />Go to the staging branch. <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; git checkout staging</span></div></div>
-      <div className="flex items-center gap-2"><GitBranchPlus size={16} />Create a new branch. <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; git checkout -b your-branch-name</span></div></div>
-      <div className="flex items-center gap-2"><PackageOpen size={16} />Install the dependecies with <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; npm install</span></div> using the terminal</div>
+      <div className="flex items-center gap-2"><GitBranch size={16} />Click on <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; Use this template</span></div></div>
+      <div className="flex items-center gap-2"><GitBranchPlus size={16} />Click on <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; Open in a codespace</span></div></div>
       <div className="flex items-center gap-2"><Play size={16} />Run <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; npm run dev</span></div> to start the development server and see your changes live</div>
       <div className="flex items-center gap-2"><MousePointerClick size={16} />Navigate to the <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">playground-page.tsx</span></div> and start editing</div>
     </div>
