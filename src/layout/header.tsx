@@ -33,6 +33,10 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
     {
       label: lang === "DE" ? "Kontakt" : "Contact",
       href: "/",
+    },
+    {
+      label: lang === "DE" ? "Playground" : "Playground",
+      href: "/playground",
     }
   ]
 
