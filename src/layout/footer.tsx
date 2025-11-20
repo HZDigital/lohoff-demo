@@ -1,11 +1,15 @@
+import { useUIStore } from "@/store/ui-store";
+
 export function Footer() {
+  const { lang } = useUIStore();
+
   const FOOTER_ITEMS = [
     {
-      label: "AGB",
+      label: lang === "DE" ? "AGB" : "Terms and Conditions",
       href: "/"
     },
     {
-      label: "Impressum / Datenschutz",
+      label: lang === "DE" ? "Impressum / Datenschutz" : "Imprint / Privacy Policy",
       href: "/"
     }
   ]

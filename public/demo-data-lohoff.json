@@ -1,0 +1,79 @@
+[
+  {
+    "Quarter": "Q1",
+    "Year": "2023",
+    "Revenue": "9.8",
+    "Profit": "1.2",
+    "Orders": "280"
+  },
+  {
+    "Quarter": "Q2",
+    "Year": "2023",
+    "Revenue": "10.5",
+    "Profit": "1.4",
+    "Orders": "295"
+  },
+  {
+    "Quarter": "Q3",
+    "Year": "2023",
+    "Revenue": "11.2",
+    "Profit": "1.5",
+    "Orders": "310"
+  },
+  {
+    "Quarter": "Q4",
+    "Year": "2023",
+    "Revenue": "12.0",
+    "Profit": "1.7",
+    "Orders": "325"
+  },
+  {
+    "Quarter": "Q1",
+    "Year": "2024",
+    "Revenue": "12.5",
+    "Profit": "1.8",
+    "Orders": "340"
+  },
+  {
+    "Quarter": "Q2",
+    "Year": "2024",
+    "Revenue": "13.7",
+    "Profit": "2.1",
+    "Orders": "372"
+  },
+  {
+    "Quarter": "Q3",
+    "Year": "2024",
+    "Revenue": "14.2",
+    "Profit": "2.4",
+    "Orders": "390"
+  },
+  {
+    "Quarter": "Q4",
+    "Year": "2024",
+    "Revenue": "15.8",
+    "Profit": "2.6",
+    "Orders": "420"
+  },
+  {
+    "Quarter": "Q1",
+    "Year": "2025",
+    "Revenue": "16.2",
+    "Profit": "2.8",
+    "Orders": "430"
+  },
+  {
+    "Quarter": "Q2",
+    "Year": "2025",
+    "Revenue": "17.1",
+    "Profit": "3.0",
+    "Orders": "455"
+  },
+  {
+    "Quarter": "Q3",
+    "Year": "2025",
+    "Revenue": "17.8",
+    "Profit": "3.2",
+    "Orders": "475"
+  }
+]

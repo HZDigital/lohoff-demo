@@ -1,8 +1,11 @@
 import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
+import { X, Globe } from "lucide-react";
 import { useState } from "react";
 
+import { useUIStore } from "@/store/ui-store";
+
 export function Header({ isPlayground }: { isPlayground: boolean }) {
+  const { lang, setLang } = useUIStore();
   const [location, setLocation] = useState("Start");
   
 
@@ -12,24 +15,28 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
       href: "/"
     },
     {
-      label: "Aktuelles",
+      label: lang === "DE" ? "Aktuelles" : "News",
       href: "/",
     },
     {
-      label: "Über uns",
+      label: lang === "DE" ? "Über uns" : "About Us",
       href: "/",
     },
     {
-      label: "Lösungen",
+      label: lang === "DE" ? "Lösungen" : "Solutions",
       href: "/",
     },
     {
-      label: "Karriere",
+      label: lang === "DE" ? "Karriere" : "Career",
       href: "/",
     },
     {
-      label: "Kontakt",
+      label: lang === "DE" ? "Kontakt" : "Contact",
       href: "/",
+    },
+    {
+      label: lang === "DE" ? "Playground" : "Playground",
+      href: "/playground",
     }
   ]
 
@@ -39,15 +46,18 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
         <img src="https://www.lohoff.com/acapsy/img/logo.png" alt="Lohoff Logo" className="h-6 w-auto" />
         {isPlayground && <X />}
         {isPlayground && <img src="https://i0.wp.com/hz.digital/wp-content/uploads/2024/02/hz-digital.png?fit=1429%2C330&ssl=1" alt="HZ Digital Logo" className="h-8 w-auto" />}
-
       </div>
-      {!isPlayground && (
-        <div className="flex">
-          {HEADER_ITEMS.map((item) => (
-            <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
-          ))}
+      
+    {!isPlayground && (
+      <div className="flex">
+        {HEADER_ITEMS.map((item) => (
+          <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
+        ))}
+        <div className="flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground gap-2" onClick={() => setLang(lang === "DE" ? "EN" : "DE")}>
+          <Globe size={16} className="mb-0.5"/> {lang === "DE" ? "DE" : "EN"}
         </div>
-      )}
+      </div>
+                )}
     </header>
   )
 }
