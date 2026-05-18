@@ -75,5 +75,12 @@
     "Revenue": "17.8",
     "Profit": "3.2",
     "Orders": "475"
+  },
+  {
+    "Quarter": "Q4",
+    "Year": "2025",
+    "Revenue": "19.8",
+    "Profit": "4.2",
+    "Orders": "500"
   }
 ]
