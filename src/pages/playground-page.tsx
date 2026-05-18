@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 
 export function PlaygroundPage() {
-  const { currentDemoTab, setCurrentDemoTab } = useUIStore();
+  const { currentDemoTab, setCurrentDemoTab, lang } = useUIStore();
   const [data, setData] = useState<CsvRow[]>([]);
   const [selectedYear, setSelectedYear] = useState<string>("all");
 
@@ -35,7 +35,7 @@ export function PlaygroundPage() {
       {currentDemoTab === "demo-views" && (
         <div className="w-full flex flex-col gap-8">
           <div className="flex items-center gap-4">
-            <span className="text-sm font-medium">Filter by Year:</span>
+            <span className="text-sm font-medium">{lang === "FR" ? "Filtrer par année :" : lang === "DE" ? "Nach Jahr filtern:" : "Filter by Year:"}</span>
             <Select value={selectedYear} onValueChange={setSelectedYear}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select year" />
