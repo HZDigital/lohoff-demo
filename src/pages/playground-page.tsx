@@ -5,9 +5,10 @@ import type { CsvRow } from "@/types/csv-row";
 import { GitBranch, GitBranchPlus, Github, MousePointerClick, Play } from "lucide-react"
 import { useEffect, useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 export function PlaygroundPage() {
-  const { currentDemoTab } = useUIStore();
+  const { currentDemoTab, setCurrentDemoTab } = useUIStore();
   const [data, setData] = useState<CsvRow[]>([]);
   const [selectedYear, setSelectedYear] = useState<string>("all");
 
@@ -30,7 +31,7 @@ export function PlaygroundPage() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-start px-10 gap-8 pt-16 pb-8">
       {/* Delete or Comment out this component reference */}
-      {currentDemoTab === "introduction" && <DeleteMe />}
+      {currentDemoTab === "introduction" && <DeleteMe setCurrentDemoTab={setCurrentDemoTab} />}
       {currentDemoTab === "demo-views" && (
         <div className="w-full flex flex-col gap-8">
           <div className="flex items-center gap-4">
@@ -57,7 +58,7 @@ export function PlaygroundPage() {
   )
 }
 
-function DeleteMe() {
+function DeleteMe({ setCurrentDemoTab }: { setCurrentDemoTab: (tab: "introduction" | "demo-views") => void }) {
   return (
     <div className="w-full flex flex-col justify-start gap-4 text-sm">
       <div className="flex items-center gap-2"><Github size={16} />Check out the repository on github: <a href="https://github.com/HZDigital/lohoff-demo" className="text-primary font-bold hover:underline hover:text-primary-hover">Lohoff Demo Repository</a></div>
@@ -65,6 +66,10 @@ function DeleteMe() {
       <div className="flex items-center gap-2"><GitBranchPlus size={16} />Click on <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; Open in a codespace</span></div></div>
       <div className="flex items-center gap-2"><Play size={16} />Run <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">&gt; npm run dev</span></div> to start the development server and see your changes live</div>
       <div className="flex items-center gap-2"><MousePointerClick size={16} />Navigate to the <div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">playground-page.tsx</span></div> and start editing</div>
+      <div className="flex items-center gap-2"><MousePointerClick size={16} />New instruction<div className="px-3 py-1 bg-muted rounded-sm"><span className="font-mono">playground-page.tsx</span></div> and start editing</div>
+      <Button onClick={() => setCurrentDemoTab("demo-views")} className="mt-4">
+        View Demo
+      </Button>
     </div>
   )
 }
