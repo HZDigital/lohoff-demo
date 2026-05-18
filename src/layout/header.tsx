@@ -15,27 +15,27 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
       href: "/"
     },
     {
-      label: lang === "DE" ? "Aktuelles" : "News",
+      label: lang === "FR" ? "Actualités" : lang === "DE" ? "Aktuelles" : "News",
       href: "/",
     },
     {
-      label: lang === "DE" ? "Über uns" : "About Us",
+      label: lang === "FR" ? "À propos" : lang === "DE" ? "Über uns" : "About Us",
       href: "/",
     },
     {
-      label: lang === "DE" ? "Lösungen" : "Solutions",
+      label: lang === "FR" ? "Solutions" : lang === "DE" ? "Lösungen" : "Solutions",
       href: "/",
     },
     {
-      label: lang === "DE" ? "Karriere" : "Career",
+      label: lang === "FR" ? "Carrière" : lang === "DE" ? "Karriere" : "Career",
       href: "/",
     },
     {
-      label: lang === "DE" ? "Kontakt" : "Contact",
+      label: lang === "FR" ? "Contact" : lang === "DE" ? "Kontakt" : "Contact",
       href: "/",
     },
     {
-      label: lang === "DE" ? "Playground" : "Playground",
+      label: "Playground",
       href: "/playground",
     }
   ]
@@ -53,8 +53,8 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
         {HEADER_ITEMS.map((item) => (
           <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
         ))}
-        <div className="flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground gap-2" onClick={() => setLang(lang === "DE" ? "EN" : "DE")}>
-          <Globe size={16} className="mb-0.5"/> {lang === "DE" ? "DE" : "EN"}
+        <div className="flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground gap-2" onClick={() => setLang(lang === "DE" ? "EN" : lang === "EN" ? "FR" : "DE")}>
+          <Globe size={16} className="mb-0.5"/> {lang}
         </div>
       </div>
                 )}

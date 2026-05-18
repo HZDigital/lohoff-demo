@@ -5,11 +5,11 @@ export function Footer() {
 
   const FOOTER_ITEMS = [
     {
-      label: lang === "DE" ? "AGB" : "Terms and Conditions",
+      label: lang === "FR" ? "CGV" : lang === "DE" ? "AGB" : "Terms and Conditions",
       href: "/"
     },
     {
-      label: lang === "DE" ? "Impressum / Datenschutz" : "Imprint / Privacy Policy",
+      label: lang === "FR" ? "Mentions légales / Confidentialité" : lang === "DE" ? "Impressum / Datenschutz" : "Imprint / Privacy Policy",
       href: "/"
     }
   ]
