@@ -22,7 +22,7 @@ export function LandingCard({ card }: LandingCardProps) {
       </div>
       <div>{card.description}</div>
       <div className="flex items-center justify-end">
-        <a href={card.link} className="flex items-center gap-4 pl-8 pr-6 py-2 bg-primary text-primary-foreground rounded-[2px] hover:bg-primary-hover">{lang === "DE" ? "MEHR ERFAHREN" : "LEARN MORE"} <ChevronRight /></a>
+        <a href={card.link} className="flex items-center gap-4 pl-8 pr-6 py-2 bg-primary text-primary-foreground rounded-[2px] hover:bg-primary-hover">{lang === "FR" ? "EN SAVOIR PLUS" : lang === "DE" ? "MEHR ERFAHREN" : "LEARN MORE"} <ChevronRight /></a>
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 interface UIStates {
-  lang: "DE" | "EN";
-  setLang: (lang: "DE" | "EN") => void;
+  lang: "DE" | "EN" | "FR";
+  setLang: (lang: "DE" | "EN" | "FR") => void;
   theme: "light" | "dark";
   setTheme: (theme: "light" | "dark") => void;
   currentDemoTab: "introduction" | "demo-views";
