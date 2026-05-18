@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { X, Globe } from "lucide-react";
 import { useState } from "react";
-
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useUIStore } from "@/store/ui-store";
 
 export function Header({ isPlayground }: { isPlayground: boolean }) {
@@ -53,8 +53,18 @@ export function Header({ isPlayground }: { isPlayground: boolean }) {
         {HEADER_ITEMS.map((item) => (
           <HeaderItem key={item.href} label={item.label} href={item.href} location={location} setLocation={setLocation} />
         ))}
-        <div className="flex items-center h-20 px-[15px] cursor-pointer hover:bg-accent text-muted-foreground hover:text-accent-foreground gap-2" onClick={() => setLang(lang === "DE" ? "EN" : lang === "EN" ? "FR" : "DE")}>
-          <Globe size={16} className="mb-0.5"/> {lang}
+        <div className="flex items-center h-20 px-[15px] text-muted-foreground gap-2">
+          <Globe size={16} className="mb-0.5" />
+          <Select value={lang} onValueChange={(v) => setLang(v as "DE" | "EN" | "FR")}>
+            <SelectTrigger className="w-[70px] border-none shadow-none focus:ring-0 text-[12.75px] font-roboto">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-background">
+              <SelectItem value="DE">DE</SelectItem>
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="FR">FR</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
                 )}
